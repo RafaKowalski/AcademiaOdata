@@ -14,4 +14,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Academia.Infra.Data.EF\Academia.Infra.Data.EF.csproj" />
+  </ItemGroup>
+
 </Project>

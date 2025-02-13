@@ -3,6 +3,6 @@
     public class Professor
     {
         public Guid ProfessorId { get; set; }
-        public string Nome { get; set; }
+        public required string Nome { get; set; }
     }
 }
