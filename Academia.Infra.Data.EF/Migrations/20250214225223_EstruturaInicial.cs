@@ -43,23 +43,24 @@ namespace Academia.Infra.Data.EF.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Telefone = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ProfessorResponsavelProfessorId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci")
+                    ProfessorResponsavelId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Alunos", x => x.AlunoId);
                     table.ForeignKey(
-                        name: "FK_Alunos_Professores_ProfessorResponsavelProfessorId",
-                        column: x => x.ProfessorResponsavelProfessorId,
+                        name: "FK_Alunos_Professores_ProfessorResponsavelId",
+                        column: x => x.ProfessorResponsavelId,
                         principalTable: "Professores",
-                        principalColumn: "ProfessorId");
+                        principalColumn: "ProfessorId",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Alunos_ProfessorResponsavelProfessorId",
+                name: "IX_Alunos_ProfessorResponsavelId",
                 table: "Alunos",
-                column: "ProfessorResponsavelProfessorId");
+                column: "ProfessorResponsavelId");
         }
 
         /// <inheritdoc />

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Academia.Infra.Data.EF.Migrations
 {
     [DbContext(typeof(AcademiaDbContext))]
-    [Migration("20250213162551_EstruturaInicial")]
+    [Migration("20250214225223_EstruturaInicial")]
     partial class EstruturaInicial
     {
         /// <inheritdoc />
@@ -44,7 +44,7 @@ namespace Academia.Infra.Data.EF.Migrations
                     b.Property<string>("Peso")
                         .HasColumnType("longtext");
 
-                    b.Property<Guid?>("ProfessorResponsavelProfessorId")
+                    b.Property<Guid>("ProfessorResponsavelId")
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Telefone")
@@ -52,7 +52,7 @@ namespace Academia.Infra.Data.EF.Migrations
 
                     b.HasKey("AlunoId");
 
-                    b.HasIndex("ProfessorResponsavelProfessorId");
+                    b.HasIndex("ProfessorResponsavelId");
 
                     b.ToTable("Alunos");
                 });
@@ -75,10 +75,17 @@ namespace Academia.Infra.Data.EF.Migrations
             modelBuilder.Entity("Academia.Domain.AlunoModulo.Aluno", b =>
                 {
                     b.HasOne("Academia.Domain.ProfessorModulo.Professor", "ProfessorResponsavel")
-                        .WithMany()
-                        .HasForeignKey("ProfessorResponsavelProfessorId");
+                        .WithMany("Alunos")
+                        .HasForeignKey("ProfessorResponsavelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ProfessorResponsavel");
+                });
+
+            modelBuilder.Entity("Academia.Domain.ProfessorModulo.Professor", b =>
+                {
+                    b.Navigation("Alunos");
                 });
 #pragma warning restore 612, 618
         }

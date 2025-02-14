@@ -15,5 +15,6 @@ namespace Academia.Domain.AlunoModulo
         public string? Telefone { get; set; }
 
         public Professor? ProfessorResponsavel { get; set; }
+        public Guid ProfessorResponsavelId { get; set; }
     }
 }
