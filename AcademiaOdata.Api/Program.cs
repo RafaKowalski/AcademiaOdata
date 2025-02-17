@@ -1,4 +1,7 @@
+using Academia.Application.AlunoModulo;
 using Academia.Infra.Data.EF;
+using Academia.Infra.Data.EF.Alunos;
+using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,9 +13,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddControllers().AddOData(opt => opt.Select().Filter().OrderBy());
+builder.Services.AddODataQueryFilter();
+
 string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AcademiaDbContext>(options =>
 options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
+
+builder.Services.AddTransient<IAlunoServices, AlunoService>();
+builder.Services.AddTransient<IAlunoRepository, AlunoRepository>();
 
 var app = builder.Build();
 

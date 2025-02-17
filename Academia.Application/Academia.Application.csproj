@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Academia.Infra.Data.EF\Academia.Infra.Data.EF.csproj" />
+  </ItemGroup>
+
 </Project>
