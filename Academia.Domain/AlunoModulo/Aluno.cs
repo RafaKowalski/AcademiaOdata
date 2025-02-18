@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Text.Json.Serialization;
 using Academia.Domain.ProfessorModulo;
 
 namespace Academia.Domain.AlunoModulo
@@ -13,7 +13,7 @@ namespace Academia.Domain.AlunoModulo
         public string? Email { get; set; }
 
         public string? Telefone { get; set; }
-
+        [JsonIgnore]
         public Professor? ProfessorResponsavel { get; set; }
         public Guid ProfessorResponsavelId { get; set; }
     }

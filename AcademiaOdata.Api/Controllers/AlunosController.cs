@@ -2,7 +2,6 @@
 using Academia.Domain.AlunoModulo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace AcademiaOdata.Api.Controllers
 {
