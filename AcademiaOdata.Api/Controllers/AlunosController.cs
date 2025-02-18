@@ -1,10 +1,12 @@
 ﻿using Academia.Application.AlunoModulo;
 using Academia.Domain.AlunoModulo;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace AcademiaOdata.Api.Controllers
 {
+    [EnableQuery]
     [Route("api/[controller]")]
     [ApiController]
     public class AlunosController : ControllerBase
