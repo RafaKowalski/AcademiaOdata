@@ -1,5 +1,7 @@
 ﻿using Academia.Application.AlunoModulo;
+using Academia.Application.ProfessorModulo;
 using Academia.Infra.Data.EF.Alunos;
+using Academia.Infra.Data.EF.Professores;
 
 namespace AcademiaOdata.Api.Extensions
 {
@@ -9,6 +11,7 @@ namespace AcademiaOdata.Api.Extensions
         {
             // Registra injeções de dependencias da camada de Services
             services.AddTransient<IAlunoServices, AlunoService>();
+            services.AddTransient<IProfessorService, ProfessorService>();
 
             return services;
         }
@@ -17,6 +20,7 @@ namespace AcademiaOdata.Api.Extensions
         {
             // Registra injeções de dependencias da camada de Infrastructure
             services.AddTransient<IAlunoRepository, AlunoRepository>();
+            services.AddTransient<IProfessorRepository, ProfessorRepository>();
 
             return services;
         }
