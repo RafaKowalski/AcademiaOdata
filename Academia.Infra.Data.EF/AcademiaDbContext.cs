@@ -15,7 +15,7 @@ namespace Academia.Infra.Data.EF
         {
             if (!optionsBuilder.IsConfigured)
             {
-                throw new System.Exception("O DbContext está sendo usado sem configuração. Use a injeção de dependência ou uma fábrica.");
+                throw new System.Exception("O DbContext está sendo usado sem configuração.");
             }
         }
     }

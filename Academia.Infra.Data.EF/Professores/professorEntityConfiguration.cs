@@ -11,6 +11,7 @@ namespace Academia.Infra.Data.EF.Professores
             builder.ToTable("Professores");
 
             builder.HasKey(p => p.ProfessorId);
+            builder.Ignore(p => p.Alunos);
 
             builder.Property(p => p.Nome).IsRequired().HasMaxLength(255);
         }
