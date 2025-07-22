@@ -1,5 +1,7 @@
-﻿using Academia.Application.AlunoModulo;
+﻿using Academia.Application.AlunoModulo.Commands;
+using Academia.Application.AlunoModulo.Services;
 using Academia.Domain.AlunoModulo;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 
@@ -11,10 +13,12 @@ namespace AcademiaOdata.Api.Controllers
     public class AlunosController : ControllerBase
     {
         private readonly IAlunoServices _alunoService;
+        private readonly IMediator _mediator;
 
-        public AlunosController(IAlunoServices alunoService)
+        public AlunosController(IAlunoServices alunoService, IMediator mediator)
         {
             _alunoService = alunoService;
+            _mediator = mediator;
         }
 
         [HttpGet]
@@ -31,11 +35,11 @@ namespace AcademiaOdata.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Aluno>> AddAluno(Aluno aluno)
+        public async Task<ActionResult<Aluno>> AddAluno(AddAlunoCommand command)
         {
-            await _alunoService.AddAluno(aluno);
+            var response = await _mediator.Send(command);
 
-            return Created($"/api/alunos/{aluno.AlunoId}", aluno);
+            return Ok(response);
         }
     }
 }

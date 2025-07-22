@@ -1,4 +1,5 @@
-﻿using Academia.Domain.AlunoModulo;
+﻿using Academia.Application.AlunoModulo.Services;
+using Academia.Domain.AlunoModulo;
 using Academia.Infra.Data.EF.Alunos;
 using Microsoft.Extensions.Logging;
 

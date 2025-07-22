@@ -1,7 +1,11 @@
 ﻿using Academia.Application.AlunoModulo;
+using Academia.Application.AlunoModulo.Commands;
+using Academia.Application.AlunoModulo.Mappers;
+using Academia.Application.AlunoModulo.Services;
 using Academia.Application.ProfessorModulo;
 using Academia.Infra.Data.EF.Alunos;
 using Academia.Infra.Data.EF.Professores;
+using FluentValidation;
 
 namespace AcademiaOdata.Api.Extensions
 {
@@ -21,6 +25,27 @@ namespace AcademiaOdata.Api.Extensions
             // Registra injeções de dependencias da camada de Infrastructure
             services.AddTransient<IAlunoRepository, AlunoRepository>();
             services.AddTransient<IProfessorRepository, ProfessorRepository>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddMediatorConfig(this IServiceCollection services)
+        {
+            services.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssembly(typeof(AddAlunoCommand).Assembly);
+            });
+
+            services.AddValidatorsFromAssembly(typeof(AddAlunoCommandValidator).Assembly);
+
+            return services;
+        }
+
+        public static IServiceCollection AddMapperConfig(this IServiceCollection services)
+        {
+            services.AddAutoMapper(typeof(AddAlunoCommandHandler).Assembly);
+
+            services.AddAutoMapper(typeof(AddAlunoMapper).Assembly);
 
             return services;
         }

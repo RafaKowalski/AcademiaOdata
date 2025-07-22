@@ -1,6 +1,6 @@
 ﻿using Academia.Domain.AlunoModulo;
 
-namespace Academia.Application.AlunoModulo
+namespace Academia.Application.AlunoModulo.Services
 {
     public interface IAlunoServices
     {

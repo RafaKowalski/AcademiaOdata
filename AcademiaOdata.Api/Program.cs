@@ -19,6 +19,8 @@ builder.Services.AddODataQueryFilter();
 
 builder.Services.AddAplicationServices();
 builder.Services.AddRepositories();
+builder.Services.AddMediatorConfig();
+builder.Services.AddMapperConfig();
 
 string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AcademiaDbContext>(options =>
