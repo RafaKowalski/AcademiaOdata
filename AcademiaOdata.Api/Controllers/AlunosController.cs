@@ -35,7 +35,7 @@ namespace AcademiaOdata.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Aluno>> AddAluno(AddAlunoCommand command)
+        public async Task<ActionResult<Aluno>> AddAluno([FromBody]AddAlunoCommand command)
         {
             var response = await _mediator.Send(command);
 
