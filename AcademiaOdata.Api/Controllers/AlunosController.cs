@@ -1,4 +1,5 @@
 ﻿using Academia.Application.AlunoModulo.Commands;
+using Academia.Application.AlunoModulo.Queries;
 using Academia.Application.AlunoModulo.Services;
 using Academia.Domain.AlunoModulo;
 using MediatR;
@@ -29,9 +30,11 @@ namespace AcademiaOdata.Api.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunosById(Guid id)
+        public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunosById(Guid id )
         {
-            return Ok(await _alunoService.GetAlunoById(id));
+            var response = await _mediator.Send(new GetAlunoByIdQuery { AlunoId = id});
+
+            return Ok(response);
         }
 
         [HttpPost]

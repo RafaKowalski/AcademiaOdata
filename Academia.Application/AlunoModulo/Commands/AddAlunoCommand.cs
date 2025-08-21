@@ -1,5 +1,4 @@
 ﻿using Academia.Domain.AlunoModulo;
-using Academia.Domain.ProfessorModulo;
 using MediatR;
 
 namespace Academia.Application.AlunoModulo.Commands
