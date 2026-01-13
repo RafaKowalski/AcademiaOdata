@@ -1,0 +1,33 @@
+<h1>Alunos!!!</h1>
+
+<div class="container mt-4">
+  <div class="row">
+    <div 
+      class="col-12 col-md-6 col-lg-4 mb-4"
+      *ngFor="let aluno of alunos"
+    >
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>Altura:</strong> {{ aluno.nome }}
+            </li>
+            <li class="list-group-item">
+              <strong>Altura:</strong> {{ aluno.altura }}
+            </li>
+            <li class="list-group-item">
+              <strong>Peso:</strong> {{ aluno.peso }}
+            </li>
+            <li class="list-group-item">
+              <strong>Email:</strong> {{ aluno.email }}
+            </li>
+            <li class="list-group-item">
+              <strong>Telefone:</strong> {{ aluno.telefone }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
