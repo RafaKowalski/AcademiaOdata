@@ -25,7 +25,9 @@ namespace AcademiaOdata.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Aluno>>> GetAllAlunos()
         {
-            return Ok(await _alunoService.GetAllAlunos());
+            var response = await _mediator.Send(new GetAllAlunosQuery());
+
+            return Ok(response);
         }
 
         [HttpGet]

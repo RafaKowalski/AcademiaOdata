@@ -22,4 +22,13 @@ namespace Academia.Application.AlunoModulo.Mappers
             CreateMap<Aluno, GetAlunoByIdQuery>();
         }
     }
+
+    public class GetAllAlunosMapper : Profile
+    {
+        public GetAllAlunosMapper()
+        {
+            CreateMap<IEnumerable<Aluno>, IEnumerable<GetAllAlunosQuery>>();
+            CreateMap<IEnumerable<GetAllAlunosQuery>, IEnumerable<Aluno>>();
+        }
+    }
 }
