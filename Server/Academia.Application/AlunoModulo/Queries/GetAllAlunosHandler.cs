@@ -15,7 +15,7 @@ namespace Academia.Application.AlunoModulo.Queries
 
         public async Task<IEnumerable<Aluno>> Handle(GetAllAlunosQuery request, CancellationToken cancellationToken)
         {
-            return await _alunoService.GetAllAlunos();
+            return await _alunoService.GetAllAlunos(cancellationToken);
         }
     }
 }

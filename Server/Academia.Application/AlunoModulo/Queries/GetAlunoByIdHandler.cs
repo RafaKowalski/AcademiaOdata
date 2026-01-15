@@ -15,7 +15,7 @@ namespace Academia.Application.AlunoModulo.Queries
 
         public async Task<Aluno> Handle(GetAlunoByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _alunoService.GetAlunoById(request.AlunoId);
+            return await _alunoService.GetAlunoById(request.AlunoId, cancellationToken);
         }
     }
 }

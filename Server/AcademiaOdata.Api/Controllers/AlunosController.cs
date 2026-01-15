@@ -13,12 +13,10 @@ namespace AcademiaOdata.Api.Controllers
     [ApiController]
     public class AlunosController : ControllerBase
     {
-        private readonly IAlunoServices _alunoService;
         private readonly IMediator _mediator;
 
-        public AlunosController(IAlunoServices alunoService, IMediator mediator)
+        public AlunosController(IMediator mediator)
         {
-            _alunoService = alunoService;
             _mediator = mediator;
         }
 

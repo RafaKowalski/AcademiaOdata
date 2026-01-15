@@ -15,7 +15,7 @@ namespace Academia.Application.AlunoModulo
             _alunoRepository = alunoRepository;
         }
 
-        public async Task<IEnumerable<Aluno>> GetAllAlunos()
+        public async Task<IEnumerable<Aluno>> GetAllAlunos(CancellationToken cancellationToken)
         {
             var todosAlunos = await _alunoRepository.GetAllAlunos();
 
@@ -25,7 +25,7 @@ namespace Academia.Application.AlunoModulo
             return todosAlunos;
         }
 
-        public async Task<Aluno> GetAlunoById(Guid id)
+        public async Task<Aluno> GetAlunoById(Guid id, CancellationToken cancellationToken)
         {
             var alunoPorId = await _alunoRepository.GetAlunoById(id);
 
