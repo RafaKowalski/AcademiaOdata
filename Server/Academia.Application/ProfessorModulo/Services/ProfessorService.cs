@@ -2,7 +2,7 @@
 using Academia.Infra.Data.EF.Professores;
 using Microsoft.Extensions.Logging;
 
-namespace Academia.Application.ProfessorModulo
+namespace Academia.Application.ProfessorModulo.Services
 {
     public class ProfessorService : IProfessorService
     {
@@ -14,7 +14,7 @@ namespace Academia.Application.ProfessorModulo
             _professorRepository = professorRepository;
         }
 
-        public async Task<IEnumerable<Professor>> GetAllProfessores()
+        public async Task<IEnumerable<Professor>> GetAllProfessores(CancellationToken cancellationToken)
         {
             var todosProfessores = await _professorRepository.GetAllProfessores();
 
@@ -24,7 +24,7 @@ namespace Academia.Application.ProfessorModulo
             return todosProfessores;
         }
 
-        public async Task<Professor> GetProfessorById(Guid id)
+        public async Task<Professor> GetProfessorById(Guid id, CancellationToken cancellationToken)
         {
             var professorPorId = await _professorRepository.GetProfessorById(id);
 

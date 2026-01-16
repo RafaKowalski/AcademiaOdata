@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Academia.Infra.Data.EF\Academia.Infra.Data.EF.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ProfessorModulo\Commands\" />
+  </ItemGroup>
+
 </Project>
