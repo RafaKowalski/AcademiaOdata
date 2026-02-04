@@ -31,7 +31,7 @@ namespace Academia.Application.AlunoModulo.Commands
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao adicionar novo aluno", ex);
+                throw new Exception("Erro ao adicionar novo aluno: ", ex);
             }
         }
     }

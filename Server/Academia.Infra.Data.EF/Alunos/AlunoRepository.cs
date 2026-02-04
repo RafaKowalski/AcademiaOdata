@@ -30,5 +30,33 @@ namespace Academia.Infra.Data.EF.Alunos
             return novoAluno;
 
         }
+
+        public async Task<Aluno> UpdateAluno(Aluno aluno)
+        {
+            var alunoExistente = await _context.Alunos.FindAsync(aluno.AlunoId);
+            if (alunoExistente == null)
+            {
+                throw new Exception("Aluno não encontrado.");
+            }
+            alunoExistente.Nome = aluno.Nome;
+            alunoExistente.Altura = aluno.Altura;
+            alunoExistente.Peso = aluno.Peso;
+            alunoExistente.Email = aluno.Email;
+            alunoExistente.Telefone = aluno.Telefone;
+            alunoExistente.ProfessorResponsavelId = aluno.ProfessorResponsavelId;
+            await _context.SaveChangesAsync();
+            return alunoExistente;
+        }
+
+        public async Task DeleteAluno(Guid id)
+        {
+            var alunoExistente = await _context.Alunos.FindAsync(id);
+            if (alunoExistente == null)
+            {
+                throw new Exception("Aluno não encontrado.");
+            }
+            _context.Alunos.Remove(alunoExistente);
+            await _context.SaveChangesAsync();
+        }
     }
 }

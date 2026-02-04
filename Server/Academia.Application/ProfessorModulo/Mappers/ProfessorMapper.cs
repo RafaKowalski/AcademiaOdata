@@ -1,4 +1,5 @@
-﻿using Academia.Application.ProfessorModulo.Queries;
+﻿using Academia.Application.ProfessorModulo.Commands;
+using Academia.Application.ProfessorModulo.Queries;
 using Academia.Domain.ProfessorModulo;
 using AutoMapper;
 
@@ -21,6 +22,15 @@ namespace Academia.Application.ProfessorModulo.Mappers
             {
                 CreateMap<GetProfessorByIdQuery, Professor>();
                 CreateMap<Professor, GetProfessorByIdQuery>();
+            }
+        }
+
+        public class AddProfessorMapper : Profile
+        {
+            public AddProfessorMapper()
+            {
+                CreateMap<AddProfessorCommand, Professor>();
+                CreateMap<Professor, AddProfessorCommand>();
             }
         }
     }

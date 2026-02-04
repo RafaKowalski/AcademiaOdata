@@ -1,4 +1,5 @@
-﻿using Academia.Application.ProfessorModulo.Queries;
+﻿using Academia.Application.ProfessorModulo.Commands;
+using Academia.Application.ProfessorModulo.Queries;
 using Academia.Application.ProfessorModulo.Services;
 using Academia.Domain.ProfessorModulo;
 using MediatR;
@@ -34,17 +35,17 @@ namespace AcademiaOdata.Api.Controllers
         [Route("{id}")]
         public async Task<ActionResult<IEnumerable<Professor>>> GetProfessorById(Guid id)
         {
-            var response = await _mediator.Send(new GetProfessorByIdQuery { ProfessorId = id});
+            var response = await _mediator.Send(new GetProfessorByIdQuery { ProfessorId = id });
 
             return Ok(response);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Professor>> AddProfessor(Professor professor)
+        public async Task<ActionResult<Professor>> AddProfessor([FromBody]AddProfessorCommand command)
         {
-            await _professorService.AddProfessor(professor);
+            var response = await _mediator.Send(command);
 
-            return Created($"/api/alunos/{professor.ProfessorId}", professor);
+            return Ok(response);
         }
     }
 }
